@@ -8,3 +8,7 @@ Training data and classifiers trained using varying non-digenic sets are availab
  matched: non-digenic pairs choen to match the distribution of features of digenic pairs.
  unaffected no gene overlap: unaffected non-digenic pairs chosen such that no genes wer ecommon between the training and held-out test sets.
  random no gene overlap: random non-digenic pairs chosen such that no genes wer ecommon between the training and held-out test sets.
+ 
+Held-out test data also provided for all sets.
+DiGePred_train_all_sets.py: script to train the classifier and test performance during training.
+DiGePred_held_out_test_performance.py: script to get predictions on held-out test and measure performance using ROC and PR curves.
