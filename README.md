@@ -12,3 +12,5 @@ Training data and classifiers trained using varying non-digenic sets are availab
 Held-out test data also provided for all sets.
 DiGePred_train_all_sets.py: script to train the classifier and test performance during training.
 DiGePred_held_out_test_performance.py: script to get predictions on held-out test and measure performance using ROC and PR curves.
+
+A website is available where the user can access DiGePred scores for all human gene pairs (http://www.meilerlab.org/index.php/servers/show?s_id=28). 
