@@ -10,3 +10,4 @@ All DiGePred models have been provided. Models were trained using different non-
 The "unaffected-no-gene-overlap" model was the best performing one and final model focussed on in the manuscript.
 
 All models were created using scikit-learn (0.22.2.post1) and saved in .pkl format. Please use _pickle or pandas (0.25.1) to load model.
+clf = pd.read_pickle('~/DiGePred_permuted_replace_ind_gene_feats_w QM_mean_Mar24_21.sav')
