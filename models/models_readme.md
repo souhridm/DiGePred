@@ -8,3 +8,5 @@ All DiGePred models have been provided. Models were trained using different non-
   random no gene overlap: random non-digenic pairs chosen such that no genes were common between the training and held-out test sets.
   
 The "unaffected-no-gene-overlap" model was the best performing one and final model focussed on in the manuscript.
+
+All models were created using scikit-learn (0.22.2.post1) and saved in .pkl format. Please use _pickle or pandas (0.25.1) to load model.
