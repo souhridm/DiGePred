@@ -10,7 +10,7 @@ DiGePred has been trained using digenic pairs from DIDA (Gazzo et al., 2016; htt
   unaffected no gene overlap: unaffected non-digenic pairs chosen such that no genes were common between the training and held-out test sets.  
   random no gene overlap: random non-digenic pairs chosen such that no genes were common between the training and held-out test sets.
  
-The positive (digenic) and negative (non-digenic) gene pairs used to train and test DiGePred are provide in the flders "positives" and "negatives".
+The positive (digenic) and negative (non-digenic) gene pairs used to train and test DiGePred are provide in the folders "positives" and "negatives".
 
 All trained DiGePred models are provided in the folder "models". "Unaffected-no-gene-overlap" was the final and best performing model. 
 
