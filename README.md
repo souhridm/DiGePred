@@ -18,6 +18,7 @@ Scripts to train models and test DiGePred performance have been provided in "scr
 
   DiGePred_train_all_sets.py: script to train the classifier and test performance during training.
   DiGePred_held_out_test_performance.py: script to get predictions on held-out test and measure performance using ROC and PR curves.
+  Get_DiGePred_scores_user_input_genes_or_pairs.py: script where user may provide an input file (.txt) containing either list of genes (-g) or list of gene pairs (-p), along with model of choice (-m) and job name (-n). It generates DiGePred results CSV with feature values and DiGePred predictions, based on model of choice.
 
 DiGePred has been run on all human gene pairs, based on all genes from HGNC. The scores are available here:
   https://vanderbilt.box.com/s/n1nzdyj8i5fa55vultyq4xn6rsp792a7
