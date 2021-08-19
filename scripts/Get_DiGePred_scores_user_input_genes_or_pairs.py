@@ -16,35 +16,16 @@ hour = str(now.strftime("%H"))
 minute = str(now.strftime("%M"))
 
 ## Load pathway data files
-
 reactome_gene_to_path_codes = pickle.load(open('~/DiGePred/data/pathways/path-to-{reactome_gene_to_path_codes}-file', 'rb'))
-reactome_path_to_genes = pickle.load(open('~/DiGePred/data/pathways/path-to-{reactome_path_to_genes}-file', 'rb'))
-reactome_path_code_to_name = pickle.load(open('~/DiGePred/data/pathways/path-to-{reactome_path_code_to_name}-file', 'rb'))
-reactome_tot_codes_in_path = pickle.load(open('~/DiGePred/data/pathways/path-to-{reactome_tot_codes_in_path}-file', 'rb'))
-
-kegg_list_genes = pickle.load(open('~/DiGePred/data/pathways/path-to-{kegg_list_genes}-file', 'rb'))
-kegg_full_gene_name = pickle.load(open('~/DiGePred/data/pathways/path-to-{kegg_full_gene_name}-file', 'rb'))
-kegg_gene_name = pickle.load(open('~/DiGePred/data/pathways/path-to-{kegg_gene_name}-file', 'rb'))
 kegg_gene_to_path_codes = pickle.load(open('~/DiGePred/data/pathways/path-to-{kegg_gene_to_path_codes}-file', 'rb'))
-kegg_path_to_genes = pickle.load(open('~/DiGePred/data/pathways/path-to-{kegg_path_to_genes}-file', 'rb'))
-kegg_path_code_to_name = pickle.load(open('~/DiGePred/data/pathways/path-to-{kegg_path_code_to_name}-file', 'rb'))
 
 ## Load phenotype data files
-
-hpo_full_name_to_codes = pickle.load(open('~/DiGePred/data/phenotypes/path-to-{hpo_full_name_to_codes}-file', 'rb'))
-hpo_code_to_all_names = pickle.load(open('~/DiGePred/data/phenotypes/path-to-{hpo_code_to_all_names }-file', 'rb'))
-similar_codes = pickle.load(open('~/DiGePred/data/phenotypes/path-to-{similar_codes}-file', 'rb'))
 hpo_gene_to_code = pickle.load(open('~/DiGePred/data/phenotypes/path-to-{hpo_gene_to_code}-file', 'rb'))
-hpo_code_to_gene = pickle.load(open('~/DiGePred/data/phenotypes/path-to-{hpo_code_to_gene}-file', 'rb'))
-hpo_name_to_code = pickle.load(open('~/DiGePred/data/phenotypes/path-to-{hpo_name_to_code}-file', 'rb'))
-hpo_code_to_name = pickle.load(open('~/DiGePred/data/phenotypes/path-to-{hpo_code_to_name}-file', 'rb'))
 
 ## Load co-expression data files
-
 coexpress_dict = pickle.load(open('~/DiGePred/data/coex/path-to-{coexpress_dict}-file', 'rb'))
 
 ## Load network data files
-
 G_ppi = nx.read_dot('~/DiGePred/data/networks/path-to-{UCSC_ppi_dot}-file')
 G_pwy = nx.read_dot('~/DiGePred/data/networks/path-to-{UCSC_pwy_dot}-file')
 G_txt = nx.read_dot('~/DiGePred/data/networks/path-to-{UCSC_txt-dot}-file')
@@ -54,33 +35,32 @@ dists_pwy = pickle.load(open('~/DiGePred/data/networks/path-to-{pwy_dists_dict}-
 dists_txt = pickle.load(open('~/DiGePred/data/networks/path-to-{txt_dists_dict}-file', 'rb'))
 
 ## Load evoltuonary biology and genomics feature data files
+lof_dict = pickle.load(open('~/DiGePred/data/evolgen/path-to-{lof_pli_dict}-file', 'rb'))
+hap_insuf_dict = pickle.load(open('~/DiGePred/data/evolgen/path-to-{happloinsufficiency_dict}-file', 'rb'))
+protein_age_dict = pickle.load(open('~/DiGePred/data/evolgen/path-to-{protein_age_dict}-file', 'rb'))
+dNdS_avg_dict = pickle.load(open('~/DiGePred/data/evolgen/path-to-{dNdS_avg_dict}-file', 'rb'))
+gene_ess_dict = pickle.load(open('~/DiGePred/data/evolgen/path-to-{Gene_Essentiality_dict}-file', 'rb'))
 
-lof_dict = pickle.load(open('~/DiGePred/data/networks/path-to-{lof_pli_dict}-file', 'rb'))
-hap_insuf_dict = pickle.load(open('~/DiGePred/data/networks/path-to-{happloinsufficiency_dict}-file', 'rb'))
-protein_age_dict = pickle.load(open('~/DiGePred/data/networks/path-to-{protein_age_dict}-file', 'rb'))
-dNdS_full_dict = pickle.load(open('~/DiGePred/data/networks/path-to-{dNdS_full_dict}-file', 'rb'))
-dNdS_avg_dict = pickle.load(open('~/DiGePred/data/networks/path-to-{dNdS_avg_dict}-file', 'rb'))
-gene_ess_dict = pickle.load(open('~/DiGePred/data/networks/path-to-{Gene_Essentiality_dict}-file', 'rb'))
-
-parser = argparse.ArgumentParser(description='Get feature dataframe')
+parser = argparse.ArgumentParser(description='Get DiGePred results')
 
 parser.add_argument('-g', '--genes', type=str,
-                    help='genes to get feature dataframe',
+                    help='user input genes to get DiGePred scores',
                     dest='genes', required=False,
                     metavar='')
 
 parser.add_argument('-p', '--pairs', type=str,
-                    help='pairs to get feature dataframe',
+                    help='user input gene pairs to get DiGePred scores',
                     dest='pairs', required=False,
                     metavar='')
 
 parser.add_argument('-m', '--model', type=str, default='unaffected no gene overlap',
-                    help='model',
+                    help='DiGePred model to be used. If not provided, the best performing "unaffected-no-gene-overlap" model will be used',
                     dest='model', required=False,
                     metavar='')
 
-parser.add_argument('-n', '--name', type=str, default='{y}-{m}-{d}-{hr}{mi}'.format(m=month, d=day, y=year, hr=hour, mi=minute),
-                    help='name',
+parser.add_argument('-n', '--name', type=str,
+                    default='{y}-{m}-{d}-{hr}{mi}'.format(m=month, d=day, y=year, hr=hour, mi=minute),
+                    help='project name to be specified by user. If not provided, output file will be named with current date and time.',
                     dest='name', required=False,
                     metavar='')
 
@@ -121,6 +101,7 @@ clfs['unaffected'] = pd.read_pickle('~/DiGePred/models/path-to-{unaffected_model
 clfs['all-digenic-vs-unaffected'] = pd.read_pickle('~/DiGePred/models/path-to-{all-digenic-vs-unaffected_model}-file')
 clfs['unaffected-no-gene-overlap'] = pd.read_pickle('~/DiGePred/models/path-to-{unaffected-no-gene-overlap_model}-file')
 clfs['random-no-gene-overlap'] = pd.read_pickle('~/DiGePred/models/path-to-{random-no-gene-overlap_model}-file')
+
 
 ## Function to get feature values as a pandas dataframe
 def get_features(pairs):
