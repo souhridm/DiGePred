@@ -28,4 +28,8 @@ DiGePred has been run on all human gene pairs, based on all genes from HGNC. The
   
   To fetch a pre-computed DiGePred score, grep 'geneA,geneB' on the files mentioned above. (genes should be in alphabetical order)
   
-A website is also available for the user to access DiGePred scores for all human gene pairs (http://www.meilerlab.org/index.php/servers/show?s_id=28).  
+A website is also available for the user to access DiGePred scores for all human gene pairs (http://www.meilerlab.org/index.php/servers/show?s_id=28). 
+
+Requirements
+  networkx v1.9
+  sklearn
